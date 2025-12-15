@@ -176,11 +176,8 @@ function initializeForm() {
     const downloadBtn = document.getElementById('downloadBtn');
     const formatBtns = document.querySelectorAll('.format-btn');
 
-    // CSV GitHub helper elements
-    const csvGithubHelper = document.getElementById('csvGithubHelper');
-    const csvCopyBox = document.getElementById('csvCopyBox');
-    const copyCsvBtn = document.getElementById('copyCsvBtn');
-    const githubPRBtn = document.getElementById('githubPRBtn');
+    // Submission helper elements
+    const submissionHelper = document.getElementById('submissionHelper');
 
     // Held-out test checkbox handler
     const hasHeldoutCheckbox = document.getElementById('hasHeldout');
@@ -214,8 +211,8 @@ function initializeForm() {
                 outputSection.setAttribute('data-csv', buildCSVLine(data));
                 outputSection.style.display = 'block';
             }
-            if (csvGithubHelper) {
-                updateCsvGithubHelper();
+            if (submissionHelper) {
+                submissionHelper.style.display = 'block';
             }
             output.scrollTop = 0;
         } catch (error) {
@@ -245,7 +242,7 @@ function initializeForm() {
                 form.reset();
                 if (outputSection) outputSection.style.display = 'none';
                 if (heldoutDetailsGroup) heldoutDetailsGroup.style.display = 'none';
-                if (csvGithubHelper) csvGithubHelper.style.display = 'none';
+                if (submissionHelper) submissionHelper.style.display = 'none';
                 clearSavedFormData();
             }
         });
@@ -315,35 +312,7 @@ function initializeForm() {
         });
     });
 
-    // CSV GitHub helper logic
-    function updateCsvGithubHelper() {
-        if (outputSection && outputSection.style.display !== 'none') {
-            const csvLine = buildCSVLine(getFormData());
-            if (csvCopyBox) csvCopyBox.value = csvLine;
-            if (csvGithubHelper) csvGithubHelper.style.display = 'block';
-        }
-    }
 
-    if (copyCsvBtn) {
-        copyCsvBtn.addEventListener('click', function() {
-            if (csvCopyBox) {
-                csvCopyBox.select();
-                document.execCommand('copy');
-                this.textContent = '✅ Copied!';
-                setTimeout(() => {
-                    this.textContent = '📋 Copy CSV Line';
-                }, 2000);
-            }
-        });
-    }
-
-    if (githubPRBtn) {
-        githubPRBtn.addEventListener('click', function() {
-            const url = 'https://github.com/fairinternal/EvalCard/edit/main/evaluation_factsheets_database.csv';
-            window.open(url, '_blank');
-        });
-    }
-    
     // ===== AUTO-SAVE SETUP =====
     // Restore saved form data on load
     restoreFormData();

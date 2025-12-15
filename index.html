@@ -30,7 +30,7 @@
                         <circle cx="11" cy="11" r="8"></circle>
                         <path d="m21 21-4.35-4.35"></path>
                     </svg>
-                    Explore Factsheets
+                    See Example Eval Factsheets
                 </button>
             </nav>
         </header>
@@ -495,21 +495,17 @@
                     <button type="button" class="format-btn" data-format="csv" id="csvCopySection">CSV</button>
                 </div>
             </div>
-            <!-- CSV Submission Helper (only shown for CSV format) -->
-            <div id="csvGithubHelper" style="display: block; margin-top:24px;">
-                <h3>Submit Your Evaluation to GitHub</h3>
+            <!-- Submission Helper -->
+            <div id="submissionHelper" style="display: block; margin-top:24px;">
+                <h3>Submit Your Evaluation</h3>
                 <ol>
-                    <li>Copy the CSV line below (no header):</li>
+                    <li>Download the JSON file using the "Download File" button below.</li>
+                    <li>Rename the file to <code>factsheet.json</code>.</li>
                     <li>
-                        <textarea id="csvCopyBox" rows="2" style="width:100%; font-family:monospace; font-size:14px;" readonly></textarea>
-                        <button type="button" id="copyCsvBtn" class="btn btn-secondary" style="margin-top:8px;">📋 Copy CSV Line</button>
+                        Place the file in your evaluation's folder in the <a href="https://github.com/evaleval/every_eval_ever" target="_blank">Every Eval Ever</a> repository (e.g., <code>data/{eval_name}/factsheet.json</code>).
                     </li>
                     <li>
-                        <strong>Click "Add to GitHub" below:</strong>
-                        <button type="button" id="githubPRBtn" class="btn btn-success" style="margin-left:8px;">🚀 Add to GitHub</button>
-                    </li>
-                    <li>
-                        In the GitHub editor, paste the CSV line at the end of <code>evaluation_factsheets_database.csv</code>, fill in the commit message, and submit your pull request.
+                        Submit a Pull Request to the repository.
                     </li>
                 </ol>
             </div>
@@ -595,7 +591,7 @@
             
             <div class="stats">
                 <span id="resultCount">0 results</span>
-                <button id="exportCSV" class="export-btn">Export to CSV</button>
+                <button id="exportCSV" class="export-btn" style="display: none;">Export to CSV</button>
             </div>
         </div>
 
@@ -642,8 +638,6 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="modalBody"></div>
-        </div>
-    
         </div>
     </div>
 

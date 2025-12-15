@@ -1,6 +1,6 @@
 # Eval Factsheets
 
-A web-based tool for generating standardized LaTeX/Markdown/Yaml/CSV evaluation factsheets for AI/ML model assessments. This tool helps researchers and practitioners create consistent, comprehensive documentation of their evaluation methodologies.
+A web-based tool for generating standardized JSON evaluation factsheets for AI/ML model assessments. This tool helps researchers and practitioners create consistent, comprehensive documentation of their evaluation methodologies.
 
 ## Quick Start
 
@@ -29,8 +29,7 @@ Each evaluation in the EEE repository should have an associated factsheet. The f
 - **Interactive Database**: Explore the csv database with a simple interface.
 - **Multiple Export Options**: 
   - Copy to clipboard with one click
-  - Download as `.tex` file
-  - Direct integration with `evaluationcard` LaTeX package
+  - Download as `.json` file
 - **Form Validation**: Ensures all required fields are completed
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **No Installation Required**: Browser-based tool, no dependencies needed
@@ -41,25 +40,10 @@ Each evaluation in the EEE repository should have an associated factsheet. The f
 
 1. **Navigate to the tool**: Visit [https://facebookresearch.github.io/EvalFactsheets](https://facebookresearch.github.io/EvalFactsheets)
 2. **Fill in the form**: Enter your evaluation details in the provided fields
-3. **Generate LaTeX**: Click the "Generate LaTeX" button
+3. **Generate JSON**: Click the "Generate JSON" button
 4. **Export your factsheet**: 
    - Use "Copy to Clipboard" for quick pasting
-   - Click "Download .tex" to save the file locally
-
-### Using with LaTeX
-
-Once you have your generated `.tex` file:
-
-```latex
-\documentclass{article}
-\usepackage{evaluationcard}
-
-\begin{document}
-\input{your-evaluation-factsheet.tex}
-\end{document}
-```
-
-**Note:** You'll need the `evaluationcard.sty` LaTeX package in your folder.
+   - Click "Download .json" to save the file locally
 
 ## Use Cases
 

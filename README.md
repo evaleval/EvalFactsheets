@@ -4,7 +4,7 @@ A web-based tool for generating standardized JSON evaluation factsheets for AI/M
 
 ## Quick Start
 
-**Try it now:** [https://facebookresearch.github.io/EvalFactsheets](https://facebookresearch.github.io/EvalFactsheets)
+**Try it now:** [https://evalevalai.com/EvalFactsheets/](https://evalevalai.com/EvalFactsheets/)
 
 *Link to the paper:* [https://arxiv.org/abs/2512.04062](https://arxiv.org/abs/2512.04062)
 
@@ -38,7 +38,7 @@ Each evaluation in the EEE repository should have an associated factsheet. The f
 
 ### Basic Usage
 
-1. **Navigate to the tool**: Visit [https://facebookresearch.github.io/EvalFactsheets](https://facebookresearch.github.io/EvalFactsheets)
+1. **Navigate to the tool**: Visit [https://evalevalai.com/EvalFactsheets/](https://evalevalai.com/EvalFactsheets/)
 2. **Fill in the form**: Enter your evaluation details in the provided fields
 3. **Generate JSON**: Click the "Generate JSON" button
 4. **Export your factsheet**: 
@@ -66,7 +66,7 @@ Complete your CLA here: <https://code.facebook.com/cla>
 
 To contribute a new evaluation factsheet:
 
-1.  **Generate the Factsheet**: Use the [Eval Factsheets tool](https://facebookresearch.github.io/EvalFactsheets) to fill out the details of your evaluation and generate the JSON output.
+1.  **Generate the Factsheet**: Use the [Eval Factsheets tool](https://evalevalai.com/EvalFactsheets/) to fill out the details of your evaluation and generate the JSON output.
 2.  **Submit to Every Eval Ever**:
     *   Go to the [Every Eval Ever](https://github.com/evaleval/every_eval_ever) repository.
     *   Locate the folder for your evaluation under `data/{eval_name}/`.

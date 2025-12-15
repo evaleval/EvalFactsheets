@@ -806,7 +806,7 @@ function displayData(data) {
     }
     
     tbody.innerHTML = data.map((item, index) => `
-        <tr>
+        <tr class="clickable-row" onclick="viewDetails(${index})">
             <td class="cell-title" data-col="title" title="${escapeHtml(item.title || '')}">${escapeHtml(item.title || 'N/A')}</td>
             <td class="cell-medium hidden" data-col="subtitle" title="${escapeHtml(item.subtitle || '')}">${escapeHtml(truncate(item.subtitle, 50))}</td>
             <td class="cell-medium hidden" data-col="authors" title="${escapeHtml(item.authors || '')}">${escapeHtml(truncate(item.authors, 40))}</td>
@@ -833,8 +833,8 @@ function displayData(data) {
             <td class="cell-long hidden" data-col="known_limitations" title="${escapeHtml(item.known_limitations || '')}">${escapeHtml(truncate(item.known_limitations, 60))}</td>
             <td class="cell-long hidden" data-col="benchmarks_list" title="${escapeHtml(item.benchmarks_list || '')}">${escapeHtml(truncate(item.benchmarks_list, 60))}</td>
             <td class="actions-col">
-                <button class="btn-view" onclick="viewDetails(${index})">View</button>
-                ${item.link ? `<a href="${escapeHtml(item.link)}" target="_blank" class="btn-link">Link</a>` : ''}
+                <button class="btn-view" onclick="viewDetails(${index}); event.stopPropagation()">View</button>
+                ${item.link ? `<a href="${escapeHtml(item.link)}" target="_blank" class="btn-link" onclick="event.stopPropagation()">Link</a>` : ''}
             </td>
         </tr>
     `).join('');

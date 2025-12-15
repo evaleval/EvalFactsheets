@@ -340,6 +340,10 @@ select[multiple] option:checked {
     font-weight: 600;
 }
 
+[data-theme="dark"] select[multiple] option:checked {
+    color: var(--meta-bg);
+}
+
 select optgroup {
     font-weight: 600;
     font-style: normal;
@@ -442,6 +446,12 @@ button[type="submit"],
 .primary-button {
     background: var(--meta-blue);
     color: white;
+}
+
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] button[type="submit"],
+[data-theme="dark"] .primary-button {
+    color: var(--meta-bg);
 }
 
 .btn-primary:hover,
@@ -587,6 +597,10 @@ button[type="submit"]:hover,
 .format-btn.active {
     background: var(--meta-blue);
     color: white;
+}
+
+[data-theme="dark"] .format-btn.active {
+    color: var(--meta-bg);
 }
 
 #output {
@@ -895,6 +909,10 @@ tbody tr {
     transition: background 0.2s;
 }
 
+.clickable-row {
+    cursor: pointer;
+}
+
 [data-theme="dark"] tbody tr {
     border-bottom-color: var(--meta-border);
 }
@@ -982,6 +1000,10 @@ td.hidden {
 
 .btn-view:hover {
     background: var(--primary-hover);
+}
+
+[data-theme="dark"] .btn-view {
+    color: var(--meta-bg);
 }
 
 .btn-link {

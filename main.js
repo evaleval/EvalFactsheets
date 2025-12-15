@@ -1,7 +1,7 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
 // ===== GLOBAL VARIABLES =====
-let currentFormat = 'latex';
+let currentFormat = 'json';
 
 // Explorer variables
 let allData = [];
@@ -200,8 +200,8 @@ function initializeForm() {
         try {
             const data = getFormData();
             let code;
-            if (currentFormat === 'latex') {
-                code = buildLatexCode(data);
+            if (currentFormat === 'json') {
+                code = buildJSONCode(data);
             } else if (currentFormat === 'markdown') {
                 code = buildMarkdownCode(data);
             } else if (currentFormat === 'csv') {
@@ -272,20 +272,20 @@ function initializeForm() {
         downloadBtn.addEventListener('click', function() {
             const code = output.textContent;
             let filename, mimeType;
-            if (currentFormat === 'latex') {
-                filename = 'evaluation_card.tex';
-                mimeType = 'text/x-latex';
+            if (currentFormat === 'json') {
+                filename = 'evaluation_factsheet.json';
+                mimeType = 'application/json';
             } else if (currentFormat === 'csv') {
-                filename = 'evaluation_card.csv';
+                filename = 'evaluation_factsheet.csv';
                 mimeType = 'text/csv';
             } else if (currentFormat === 'markdown') {
-                filename = 'evaluation_card.md';
+                filename = 'evaluation_factsheet.md';
                 mimeType = 'text/markdown';
             } else if (currentFormat === 'yaml') {
-                filename = 'evaluation_card.yaml';
+                filename = 'evaluation_factsheet.yaml';
                 mimeType = 'text/yaml';
             } else {
-                filename = 'evaluation_card.txt';
+                filename = 'evaluation_factsheet.txt';
                 mimeType = 'text/plain';
             }
             const blob = new Blob([code], { type: mimeType });
@@ -339,7 +339,7 @@ function initializeForm() {
 
     if (githubPRBtn) {
         githubPRBtn.addEventListener('click', function() {
-            const url = 'https://github.com/fairinternal/EvalCard/edit/main/evaluation_cards_database.csv';
+            const url = 'https://github.com/fairinternal/EvalCard/edit/main/evaluation_factsheets_database.csv';
             window.open(url, '_blank');
         });
     }
@@ -361,10 +361,8 @@ function getFormData() {
     const data = {};
     
     const textFields = ['title', 'subtitle', 'authors', 'link', 'code_link', 'date', 
-                       'purpose', 'principlesTested', 'functionalProps', 'inputModality', 
-                       'outputModality', 'inputSource', 'outputSource', 'size', 'splits', 
-                       'design', 'judge', 'protocol', 'modelAccess', 'isValid', 'heldoutDetails',
-                       'alignmentValidation', 'baselineModels', 'robustnessMeasures', 
+                       'principlesTested', 'protocol', 'isValid', 'heldoutDetails',
+                       'alignmentValidation', 'baselineModels', 
                        'knownLimitations', 'benchmarksList'];
     
     textFields.forEach(field => {
@@ -373,12 +371,24 @@ function getFormData() {
             data[field] = element.value || '';
         }
     });
+
+    const selectFields = ['purpose', 'functionalProps', 'inputModality', 'outputModality',
+                         'inputSource', 'outputSource', 'size', 'splits', 'design',
+                         'judge', 'modelAccess', 'robustnessMeasures'];
+
+    selectFields.forEach(field => {
+        const element = document.getElementById(field);
+        if (element) {
+            if (element.multiple) {
+                data[field] = Array.from(element.selectedOptions).map(opt => opt.value);
+            } else {
+                data[field] = element.value || '';
+            }
+        }
+    });
     
     const hasHeldout = document.getElementById('hasHeldout');
     data.hasHeldout = hasHeldout ? hasHeldout.checked : false;
-    
-    // const isValid = document.getElementById('isValid');
-    // data.isValid = isValid ? isValid.checked : false;
     
     return data;
 }
@@ -390,6 +400,10 @@ function escapeLatex(text) {
         .replace(/~/g, '\\textasciitilde{}')
         .replace(/\^/g, '\\textasciicircum{}')
         .replace(/[&%$#_{}]/g, '\\$&');
+}
+
+function buildJSONCode(data) {
+    return JSON.stringify(data, null, 2);
 }
 
 function buildLatexCode(data) {
@@ -457,7 +471,7 @@ function buildLatexCode(data) {
 }
 
 function buildMarkdownCode(data) {
-    let markdown = `# ${data.title || 'Evaluation Card'}\n\n`;
+    let markdown = `# ${data.title || 'Evaluation Factsheet'}\n\n`;
     
     if (data.subtitle) {
         markdown += `## ${data.subtitle}\n\n`;
@@ -599,7 +613,7 @@ async function initializeExplorer() {
 
 async function loadData() {
     try {
-        const response = await fetch('evaluation_cards_database.csv');
+        const response = await fetch('evaluation_factsheets_database.csv');
         const csvText = await response.text();
         allData = parseCSV(csvText);
         filteredData = [...allData];
@@ -608,7 +622,7 @@ async function loadData() {
         console.error('Error loading data:', error);
         const tableBody = document.getElementById('tableBody');
         if (tableBody) {
-            tableBody.innerHTML = '<tr><td colspan="26" style="text-align:center;color:red;">Error loading CSV file. Make sure evaluation_cards_database.csv is in the same folder.</td></tr>';
+            tableBody.innerHTML = '<tr><td colspan="26" style="text-align:center;color:red;">Error loading CSV file. Make sure evaluation_factsheets_database.csv is in the same folder.</td></tr>';
         }
     }
 }

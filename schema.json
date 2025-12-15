@@ -1,0 +1,161 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Evaluation Factsheet",
+  "description": "A schema for evaluation factsheets describing benchmarks and evaluations.",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The official name of the evaluation or benchmark."
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "A concise description of what the evaluation measures."
+    },
+    "authors": {
+      "type": "string",
+      "description": "Who made this evaluation (Org/University/Company/Lab/Authors)."
+    },
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the paper or documentation describing the evaluation."
+    },
+    "code_link": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the repository containing the evaluation implementation."
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Publication or release date of the evaluation."
+    },
+    "purpose": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The primary intended use case(s) for this evaluation."
+    },
+    "principlesTested": {
+      "type": "string",
+      "description": "Principles or capabilities being tested."
+    },
+    "functionalProps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Functional properties of the evaluation."
+    },
+    "inputModality": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Input modalities (e.g., Text, Image)."
+    },
+    "outputModality": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Output modalities (e.g., Text, Image)."
+    },
+    "inputSource": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Source of the input data."
+    },
+    "outputSource": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Source of the output data (e.g., Model generated)."
+    },
+    "size": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Size of the evaluation dataset."
+    },
+    "splits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Dataset splits (e.g., Train, Test, Validation)."
+    },
+    "design": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Design of the evaluation."
+    },
+    "judge": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Who or what judges the output."
+    },
+    "protocol": {
+      "type": "string",
+      "description": "Description of the evaluation protocol."
+    },
+    "modelAccess": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Level of model access required."
+    },
+    "hasHeldout": {
+      "type": "boolean",
+      "description": "Whether there is a held-out test set."
+    },
+    "heldoutDetails": {
+      "type": "string",
+      "description": "Details about the held-out test set."
+    },
+    "alignmentValidation": {
+      "type": "string",
+      "description": "Validation of the alignment measurement."
+    },
+    "isValid": {
+      "type": "string",
+      "description": "Construct validity score or status."
+    },
+    "baselineModels": {
+      "type": "string",
+      "description": "List of baseline models and their performance."
+    },
+    "robustnessMeasures": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Robustness measures applied."
+    },
+    "knownLimitations": {
+      "type": "string",
+      "description": "Known sensitivities and limitations."
+    },
+    "benchmarksList": {
+      "type": "string",
+      "description": "List of similar evaluations or benchmarks."
+    }
+  },
+  "required": [
+    "title",
+    "subtitle",
+    "authors",
+    "date"
+  ]
+}

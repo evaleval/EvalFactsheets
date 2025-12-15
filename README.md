@@ -77,19 +77,6 @@ If you find a bug or have a feature request:
    - Expected vs actual behavior
    - Screenshots if applicable
 
-### Pull Requests
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature-name`
-3. Make your changes
-4. Test thoroughly
-5. Commit with clear messages: `git commit -m "Add: feature description"`
-6. Push to your fork: `git push origin feature/your-feature-name`
-7. Open a Pull Request with:
-   - Description of changes
-   - Any related issue numbers
-   - Screenshots/examples if applicable
-
 ### Development Guidelines
 
 - Keep code clean and well-commented
